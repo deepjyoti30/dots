@@ -1,0 +1,720 @@
+[colors]
+background = #B2111111
+foreground = ${xrdb:foreground}
+foreground-alt= #528BFF
+black = #000000
+red = ${xrdb:color1}
+green = ${xrdb:color2}
+blue = ${xrdb:color4}
+yellow = ${xrdb:color3}
+magenta = ${xrdb:color5}
+cyan = ${xrdb:color6}
+white = ${xrdb:color7}
+grey = ${xrdb:color8}
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+[bar/songbar]
+width = 26%
+height = 32
+offset-x = 73%
+offset-y = 1%
+override-redirect = true
+enable-ipc = true
+
+font-0 = Fira Code:pixelsize=11;3
+font-1 = octicons:pixelsize=14;3
+font-2 = Weather Icons:size=12;4
+font-3 = FontAwesome5Free:style=Solid:pixelsize=14;4
+font-4 = FontAwesome5Brands:style=Solid:pixelsize=14;4
+font-5 = MaterialIcons:pixelsize=13;4
+font-6 = Wuncon Siji:pixelsize=13;4
+
+padding-left = 1
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 1
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+modules-center = mpd
+
+[bar/util]
+width = 18%
+height = 32
+offset-x = 2%
+offset-y = 1%
+override-redirect = true
+enable-ipc = true
+
+font-0 = Fira Code:pixelsize=11;3
+font-1 = octicons:pixelsize=14;3
+font-2 = Weather Icons:size=12;4
+font-3 = FontAwesome5Free:style=Solid:pixelsize=14;4
+font-4 = FontAwesome5Brands:style=Solid:pixelsize=14;4
+font-5 = MaterialIcons:pixelsize=13;4
+font-6 = Wuncon Siji:pixelsize=13;4
+
+padding-left = 1
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 1
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+modules-center = battery clock
+
+[bar/shortcuts]
+width = 22%
+height = 30
+offset-x = 39%
+offset-y = 1%
+bottom = true
+override-redirect = true
+enable-ipc = true
+
+font-0 = Fira Code:pixelsize=11;3
+font-1 = octicons:pixelsize=14;3
+font-2 = Weather Icons:size=12;4
+font-3 = FontAwesome5Free:style=Solid:pixelsize=12;4
+font-4 = FontAwesome5Brands:style=Solid:pixelsize=12;4
+font-5 = MaterialIcons:pixelsize=13;4
+font-6 = Wuncon Siji:pixelsize=13;4
+
+spacing = 0
+padding-left = 1
+padding-right = 1
+module-margin-left = 1
+module-margin-right = 1
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+modules-center = i3
+
+[bar/toolbar]
+width = 100%
+height = 32
+offset-x = 1%
+offset-y = 1%
+override-redirect = true
+;Make bars invisible in full screen
+wm-restack = i3
+enable-ipc = true
+
+font-0 = Fira Code:pixelsize=11;3
+font-1 = octicons:pixelsize=14;3
+font-2 = Weather Icons:size=12;4
+font-3 = FontAwesome5Free:style=Solid:pixelsize=14;4
+font-4 = FontAwesome5Brands:style=Solid:pixelsize=14;4
+font-5 = MaterialIcons:pixelsize=13;4
+font-6 = Wuncon Siji:pixelsize=13;4
+
+padding-left = 1
+padding-right = 4
+;module-margin-left = 1
+;module-margin-right = 1
+
+background = #000f0f0f
+;${colors.background}
+foreground = ${colors.foreground}
+
+modules-left = battery clock
+;ram cpu weather pulseaudio
+;modules-center = mpd
+; xwindow
+modules-right = mpd
+;song prev-song pp next-song
+;mpd
+;wifi date clock
+
+
+[bar/bottombar]
+width = 96%
+height = 32
+offset-x = 2%
+offset-y = 1%
+bottom = true
+override-redirect = true
+
+; Hide in fullscreen
+wm-restack = i3
+enable-ipc = true
+
+font-0 = Fira Code:pixelsize=11;3
+font-1 = octicons:pixelsize=14;3
+font-2 = Weather Icons:size=14;4
+font-3 = FontAwesome5Free:style=Solid:pixelsize=12;4
+font-4 = FontAwesome5Brands:style=Solid:pixelsize=12;4
+font-5 = MaterialIcons:pixelsize=13;4
+font-6 = Wuncon Siji:pixelsize=13;4
+;font-7 = FontAwesome5Free:style=Regular:pixelsize=12
+
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 0
+background = #000f0f0f
+;${colors.background}
+foreground = ${colors.foreground}
+
+;modules-left = battery clock
+modules-center = i3
+;modules-right = mpd
+;modules-right = keyboard powermenu tray
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+[module/mpd]
+type = internal/mpd
+
+label-offline =  mpd is offline
+format-online = <label-song>
+;<icon-prev><toggle><icon-next>
+format-online-background = #FFFFFF
+;${colors.white}
+format-online-padding = 2
+
+icon-prev = %{T3}%{T-}
+icon-prev-padding = 1
+icon-prev-foreground = ${colors.black}
+icon-prev-background = ${colors.yellow}
+
+icon-next = %{T3}%{T-}
+icon-next-padding = 1
+icon-next-foreground = ${colors.black}
+icon-next-background = ${colors.yellow}
+
+icon-play = 
+icon-play-padding = 1
+icon-play-foreground = ${colors.black}
+icon-play-background = ${colors.yellow}
+
+icon-pause = 
+icon-pause-padding = 1
+icon-pause-foreground = ${colors.black}
+icon-pause-background = ${colors.yellow}
+
+label-song-foreground = #2A335A
+;${colors.black}
+label-song =  %title%
+;label-song-maxlen = 27
+;label-song-ellipsis = true
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+; If not, uses default sink
+sink = alsa_output.pci-0000_12_00.3.analog-stereo
+
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+; Default: true
+use-ui-max = true
+
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume =  <label-volume>
+;<ramp-volume>
+
+; Available tags:
+;   <label-muted> (default)
+;   <ramp-volume>
+;   <bar-volume>
+;format-muted = <label-muted>
+
+; Available tokens:
+;   %percentage% (default)
+label-volume = %percentage%%
+label-volume-foreground = ${colors.yellow}
+
+; Available tokens:
+;   %percentage% (default)
+label-muted = 🔇 muted
+label-muted-foreground = ${colors.red}
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
+
+[module/fs]
+type = custom/script
+exec = $HOME/.config/polybar/fs.sh
+interval = 0.25
+format-foreground = ${colors.green}
+
+label = %output%
+
+[module/battery]
+type = internal/battery
+
+; This is useful in case the battery never reports 100% charge
+full-at = 99
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = ADP1
+
+; If an inotify event haven't been reported in this many
+; seconds, manually poll for new values.
+;
+; Needed as a fallback for systems that don't report events
+; on sysfs/procfs.
+;
+; Disable polling by setting the interval to 0.
+;
+; Default: 5
+poll-interval = 5
+
+format-charging-foreground = ${colors.black}
+format-charging-background = #FFFFFF
+;${colors.magenta}
+format-discharging-foreground = ${colors.black}
+format-discharging-background = #FFFFFF
+;${colors.magenta}
+
+format-charging-padding = 2
+format-discharging-padding = 2
+
+format-charging = <animation-charging> <label-charging>
+
+; Available tags:
+;   <label-discharging> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;   <animation-discharging>
+format-discharging = <ramp-capacity> <label-discharging>
+
+; Available tags:
+;   <label-full> (default)
+;   <bar-capacity>
+;   <ramp-capacity>
+;format-full = <ramp-capacity> <label-full>
+
+; Available tokens:
+;   %percentage% (default)
+;   %time%
+;   %consumption% (shows current charge rate in watts)
+label-charging = %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+;   %time%
+;   %consumption% (shows current discharge rate in watts)
+label-discharging = %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+label-full = Fully charged
+
+; Only applies if <ramp-capacity> is used
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+; Framerate in milliseconds
+animation-charging-framerate = 750
+
+; Only applies if <animation-discharging> is used
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+; Framerate in milliseconds
+animation-discharging-framerate = 500
+
+
+[module/wifi]
+type = internal/network
+
+interface = wlp6s0
+interval = 1
+
+label-connected = %{A} %{A:wicd-client &:} %essid%%{A}
+format-connected-foreground = ${colors.black}
+format-connected-background = ${colors.blue}
+format-connected-padding = 2
+
+format-disconnected-padding = 1
+format-disconnected-foreground = ${colors.red}
+format-disconnected-background = ${colors.blue}
+
+label-disconnected = %{A:wicd-client &:} Disconnected%{A}
+
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+
+format-foreground = ${colors.magenta}
+
+label =  %{A:termite -e vtop &:}%percentage%%
+
+
+[module/temperature]
+label-padding-left = 1
+type = custom/script
+exec = $HOME/.config/polybar/temperature.sh
+interval = 1
+
+format-foreground = ${colors.yellow}
+
+label =  %output%°C
+
+[module/song]
+type = custom/script
+exec = $HOME/.config/polybar/currentcmus.sh
+;click-left =  sh $HOME/.config/polybar/pp.sh
+interval = 0.25
+format-foreground = ${colors.black}
+format-background = ${colors.white}
+format-padding = 2
+
+label =  %output%
+
+[module/next-song]
+type = custom/script
+exec = $HOME/.config/polybar/shownext.sh
+click-left =sh $HOME/.config/polybar/next.sh
+interval = 0.25
+
+format-padding = 1
+format-background = ${colors.yellow}
+format-foreground = ${colors.black}
+label = %output%
+
+[module/prev-song]
+type = custom/script
+exec = $HOME/.config/polybar/showprev.sh
+click-left =sh $HOME/.config/polybar/prev.sh
+interval = 0.25
+
+format-padding = 1
+format-background = ${colors.yellow}
+format-foreground = ${colors.black}
+label = %output%
+
+[module/pp]
+type = custom/script
+exec = $HOME/.config/polybar/showpp.sh
+click-left =sh $HOME/.config/polybar/pp.sh
+interval = 0.25
+
+label-padding = 1
+label-margin = 0
+label-background = ${colors.yellow}
+label-foreground = ${colors.black}
+label = %output%
+
+[module/ram]
+label-padding-left = 0
+type = internal/memory
+interval = 3
+
+format-foreground = ${colors.green}
+
+label =  %{A:LANG=en_US.utf8 TERM=xterm-256color termite -e vtop &:}%percentage_used%%
+
+
+[module/weather]
+label-padding-left = 0
+type = custom/script
+exec = "sh $HOME/.config/polybar/weather.sh"
+interval = 600
+label-font = 3
+
+format-foreground = ${colors.blue}
+
+label = %output%
+
+[module/xwindow]
+label-padding-left = 1
+type = internal/xwindow
+
+label = %title%
+label-maxlen = 40
+
+format-foreground = ${colors.foreground}
+format-prefix = " "
+format-suffix = " "
+
+format-margin = 5
+
+
+[module/clock]
+type = custom/script
+exec = "sh $HOME/.config/polybar/time.sh"
+interval = 1.0
+
+format = <label>
+format-foreground = #F02E6E
+;${colors.magenta}
+format-background = #FFFFFF
+;${colors.grey}
+format-padding = 2
+
+label = %output%
+
+
+[module/date]
+type = internal/date
+
+date =  %d/%m
+
+format = <label>
+;format-prefix = " "
+format-foreground = ${colors.red}
+
+label = %date%
+
+
+[module/volume1]
+type = internal/volume
+master-mixer = Master
+
+format-volume-foreground = ${colors.green}
+
+format-volume =  <label-volume>
+
+format-volume-prefix = " "
+format-muted-prefix = " "
+
+label-muted =  mute
+label-muted-foreground = ${colors.red}
+
+[module/playp]
+type = custom/ipc
+hook-0 = sh $HOME/.config/polybar/showpp.sh
+hook-1 = sh $HOME/.config/polybar/pp.sh
+initial = 1
+format-foreground = ${colors.magenta}
+click-left = polybar-msg -p %pid% hook pp 2
+
+[module/prev]
+type = custom/ipc
+hook-0 = cmus-remote -r
+hook-1 = echo 
+initial = 2
+click-left = polybar-msg -p %pid% hook prev 1
+format-foreground = ${colors.yellow}
+
+[module/next]
+type = custom/ipc
+hook-0 = cmus-remote -n
+hook-1 = echo 
+initial = 2
+
+click-left = polybar-msg -p %pid% hook next 1
+format-foreground = ${colors.yellow}
+
+
+[module/song-menu]
+type = custom/menu
+
+expand-right = true
+label-open = 
+label-open-foreground = ${colors.yellow}
+label-close = 
+label-close-foreground = ${colors.red}
+label-separator = "  "
+
+menu-0-0 = 
+menu-0-0-exec = cmus-remote -r
+menu-0-1 = 
+menu-0-1-exec = sh $HOME/.config/polybar/pp.sh
+menu-0-2 = 
+menu-0-2-exec = cmus-remote -n
+
+[module/powermenu]
+type = custom/menu
+
+format-prefix = " "
+
+label-open = 
+label-open-foreground = ${colors.red}
+label-close = 
+label-close-foreground = ${colors.red}
+label-separator = "  "
+
+menu-0-0 = Reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = Shutdown
+menu-0-1-exec = menu-open-2
+menu-0-2 = Exit
+menu-0-2-exec = menu-open-3
+
+menu-1-0 = 
+menu-1-0-exec = termite -e 'reboot'
+menu-1-1 = 
+menu-1-1-exec = menu-open-0
+
+menu-2-0 = 
+menu-2-0-exec = termite -e 'poweroff'
+menu-2-1 = 
+menu-2-1-exec = menu-open-0
+
+menu-3-0 = 
+menu-3-0-exec = herbstclient quit; bspc quit; exec i3-msg exit
+menu-3-1 = 
+menu-3-1-exec = menu-open-0
+
+[module/ewmh]
+type = internal/xworkspaces
+label-font = 3
+
+enable-click = true
+enable-scroll = true
+
+icon-0 = "term;"
+icon-1 = "code;"
+icon-2 = "web;"
+#icon-3 = "social;"
+icon-3 = "misc;"
+icon-4 = "music;"
+icon-6 = "media;"
+icon-7 = "editor;"
+
+label-active = %icon%
+label-active-foreground = ${colors.black}
+label-active-background = ${colors.white}
+label-active-padding = 2
+
+label-urgent = %icon%
+label-urgent-foreground = #ffffff
+label-urgent-background = ${colors.red}
+label-urgent-padding = 2
+
+label-empty = %icon%
+label-empty-foreground = ${colors.white}
+label-empty-padding = 2
+
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+format-background = ${colors.background}
+label-font = 3
+
+ws-icon-0 = "1;"
+ws-icon-1 = "2;"
+ws-icon-2 = "3;"
+ws-icon-3 = "4;"
+ws-icon-4 = "5;"
+ws-icon-5 = "6;"
+;ws-icon-6 = "7;"
+;ws-icon-7 = "8;"
+
+index-sort = true
+wrapping-scroll = true
+strip-wsnumbers = true
+
+label-focused = "%icon%"
+label-focused-foreground = ${colors.black}
+label-focused-background = #5AF7B0
+;${colors.cyan}
+label-focused-padding = 2
+
+label-unfocused = "%icon%"
+label-unfocused-padding = 2
+label-unfocused-background = #FFFFFF
+;${colors.grey}
+label-unfocused-foreground = #F02E6E
+;${colors.green}
+
+label-urgent = "%icon%"
+label-urgent-foreground = #ffffff
+label-urgent-background = ${colors.red}
+label-urgent-padding = 2
+
+label-visible = "%icon%"
+label-visible-padding = 2
+
+
+[module/bspwm]
+type = internal/bspwm
+format = <label-state> <label-mode>
+label-font = 3
+
+ws-icon-0 = "term;"
+ws-icon-1 = "code;"
+ws-icon-2 = "chrome;"
+ws-icon-3 = "social;"
+ws-icon-4 = "music;"
+ws-icon-5 = "misc;"
+ws-icon-6 = "media;"
+ws-icon-7 = "editor;"
+
+enable-scroll = true
+
+label-focused = %icon%
+label-focused-foreground = ${colors.black}
+label-focused-background = ${colors.white}
+label-focused-padding = 2
+
+label-occupied = %icon%
+label-occupied-padding = 2
+
+label-urgent = "%icon%"
+label-urgent-foreground = #ffffff
+label-urgent-background = ${colors.red}
+label-urgent-padding = 2
+
+label-empty = %icon%
+label-empty-padding = 2
+
+
+[module/keyboard]
+type = internal/xkeyboard
+
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+format = <label-indicator>
+label-indicator-padding = 1
+#label-indicator-background = ${colors.white}
+label-indicator-foreground = ${colors.black}
+
+
+[module/my-text-label]
+type = custom/text
+content = l m r
+
+content-background = #000
+content-foreground = #fff
+content-padding = 4
+
+; "click-(left|middle|right)" will be executed using "/usr/bin/env sh -c $COMMAND"
+click-left = echo left
+click-middle = echo middle
+click-right = echo right
+
+; "scroll-(up|down)" will be executed using "/usr/bin/env sh -c $COMMAND"
+;scroll-up = echo scroll up
+;scroll-down = echo scroll down
+
+#[module/spotify]
+#type = custom/script
+#exec = sh $HOME/.config/polybar/spotify.sh
+
+#interval = 0.5
+#label-maxlen = 70
+#label-foreground = ${colors.yellow}
