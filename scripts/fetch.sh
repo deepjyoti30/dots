@@ -152,16 +152,25 @@ CPU=$(awk '/cpu /{print 100*($2+$4)/($2+$4+$5)}' /proc/stat)
 
 # Get the value in range of 10
 eq=${CPU[@]:0:1}
+
 # Calculate the rest
 rest=$((10 - eq))
 info_line=${info[5]}
 len_info=${#info_line}
 
+# Now convert the op to int
+dot_as_last="${CPU%%.*}"
+dot_pos=${#dot_as_last}
+
 ## Print the info
 #- Calculate Space req
 req_spaces=$((HALF - len_info - 5))
 print_space req_spaces
-printf "${info[5]} $color6${CPU[@]:0:2}%% $colorrest"
+printf "${info[5]} $color6${CPU[@]:0:$dot_pos}%%$colorrest"
+
+# Print space between info and bar
+no_spaces=$((4 - $dot_pos))
+print_space no_spaces
 
 # Print the bars
 print_bars eq $color4
@@ -175,6 +184,10 @@ MEM=$(free | grep Mem | awk '{print $3/$2 * 100.0}')
 eq=${MEM[@]:0:1}
 rest=$((10 - eq))
 
+# Now convert the op to int
+dot_as_last="${MEM%%.*}"
+dot_pos=${#dot_as_last}
+
 info_line=${info[6]}
 len_info=${#info_line}
 
@@ -182,7 +195,11 @@ len_info=${#info_line}
 #- Calculate Space req
 req_spaces=$((HALF - len_info - 5))
 print_space req_spaces
-printf "${info[6]} $color6${MEM[@]:0:2}%% $colorrest"
+printf "${info[6]} $color6${MEM[@]:0:$dot_pos}%%$colorrest"
+
+# Print space between info and bar
+no_spaces=$((4 - $dot_pos))
+print_space no_spaces
 
 # Print the bars
 print_bars eq $color4
@@ -194,17 +211,26 @@ printf "\n"
 # Get the CPU temperature
 temp=$(cat /sys/class/thermal/thermal_zone1/temp)
 temp=$((temp/1000))
+
 eq=${temp[@]:0:1}
 rest=$((10 - eq))
 
 info_line=${info[7]}
 len_info=${#info_line}
 
+# Now convert the op to int
+dot_as_last="${temp%%.*}"
+dot_pos=${#dot_as_last}
+
 ## Print the info
 #- Calculate Space req
 req_spaces=$((HALF - len_info - 5))
 print_space req_spaces
-printf "${info[7]} $color6${MEM[@]:0:2}\u2103 $colorrest"
+printf "${info[7]} $color6${temp[@]:0:$dot_pos}\u2103$colorrest"
+
+# Print space between info and bar
+no_spaces=$((4 - $dot_pos))
+print_space no_spaces
 
 # Print the bars
 print_bars eq $color4
