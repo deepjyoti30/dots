@@ -44,6 +44,13 @@ calc_longest(){
     done
 }
 
+# Ceiling function
+ceil(){
+    i=$1
+    ans=$((${i%.*} + 1))
+}
+
+
 # Function for bars
 print_bars(){
     no=$1
@@ -150,43 +157,50 @@ printf "\n\n"
 # Get CPU percent
 CPU=$(awk '/cpu /{print 100*($2+$4)/($2+$4+$5)}' /proc/stat)
 
-# Get the value in range of 10
-eq=${CPU[@]:0:1}
-
-# Calculate the rest
-rest=$((10 - eq))
-info_line=${info[5]}
-len_info=${#info_line}
-
-# Now convert the op to int
+# dot_space req for spaces
 dot_as_last="${CPU%%.*}"
 dot_pos=${#dot_as_last}
+
+# Get the value in range of 10
+eq=${CPU[@]:0:dot_pos}
+ceil $eq
+conv_percent=$((ans/10))
+
+# Calculate the rest
+rest=$((10 - conv_percent))
+info_line=${info[5]}
+len_info=${#info_line}
 
 ## Print the info
 #- Calculate Space req
 req_spaces=$((HALF - len_info - 5))
 print_space req_spaces
-printf "${info[5]} $color6${CPU[@]:0:$dot_pos}%%$colorrest"
+printf "${info[5]} $color6$eq%%$colorrest"
 
 # Print space between info and bar
 no_spaces=$((4 - $dot_pos))
 print_space no_spaces
 
 # Print the bars
-print_bars eq $color4
+print_bars conv_percent $color4
 print_bars rest $color5
 printf "\n"
 
 #-------------MEM-----------
 # Get mem percentage
 MEM=$(free | grep Mem | awk '{print $3/$2 * 100.0}')
-# Get value in range of 10
-eq=${MEM[@]:0:1}
-rest=$((10 - eq))
 
-# Now convert the op to int
+# Get position of dot
 dot_as_last="${MEM%%.*}"
 dot_pos=${#dot_as_last}
+
+# Get value in range of 10
+eq=${MEM[@]:0:2}
+ceil $eq
+conv_percent=$((ans/10))
+
+# Calculate the rest
+rest=$((10 - conv_percent))
 
 info_line=${info[6]}
 len_info=${#info_line}
@@ -195,14 +209,14 @@ len_info=${#info_line}
 #- Calculate Space req
 req_spaces=$((HALF - len_info - 5))
 print_space req_spaces
-printf "${info[6]} $color6${MEM[@]:0:$dot_pos}%%$colorrest"
+printf "${info[6]} $color6$eq%%$colorrest"
 
 # Print space between info and bar
 no_spaces=$((4 - $dot_pos))
 print_space no_spaces
 
 # Print the bars
-print_bars eq $color4
+print_bars conv_percent $color4
 print_bars rest $color5
 printf "\n"
 
@@ -210,17 +224,21 @@ printf "\n"
 #--------------TEMP---------------
 # Get the CPU temperature
 temp=$(cat /sys/class/thermal/thermal_zone1/temp)
+
+# Get position of dot
+dot_as_last="${MEM%%.*}"
+dot_pos=${#dot_as_last}
+
 temp=$((temp/1000))
 
-eq=${temp[@]:0:1}
-rest=$((10 - eq))
+eq=${temp[@]:0:2}
+ceil $eq
+conv_percent=$((ans/10))
 
+# Calculate the rest
+rest=$((10 - conv_percent))
 info_line=${info[7]}
 len_info=${#info_line}
-
-# Now convert the op to int
-dot_as_last="${temp%%.*}"
-dot_pos=${#dot_as_last}
 
 ## Print the info
 #- Calculate Space req
@@ -233,7 +251,7 @@ no_spaces=$((4 - $dot_pos))
 print_space no_spaces
 
 # Print the bars
-print_bars eq $color4
+print_bars conv_percent $color4
 print_bars rest $color5
 printf "\n"
 
