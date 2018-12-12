@@ -1,0 +1,83 @@
+
+#################################
+#     GLX backend
+#################################
+
+backend = "glx";
+detect-rounded-corners = true;
+glx-copy-from-front = false;
+glx-no-rebind-pixmap = true;
+glx-no-stencil = true;
+glx-swap-method = 1;
+#glx-use-gpushader4 = true;
+mark-ovredir-focused = true;
+mark-wmwin-focused = true;
+paint-on-overlay = true;
+refresh-rate = 0;
+use-ewmh-active-win = true;
+vsync = "opengl-swc";
+
+
+
+#################################
+#       Blur
+#################################
+blur-background = true;
+blur-background-fixed = true;
+blur-method = "kawase";
+blur-strength = 8;
+blur-background-exclude = [
+  "name = 'Screenshot'",
+  "class_i *= 'tray'",
+  "class_g = 'Firefox' && argb",
+  "class_g ?= 'maim'",
+  "class_g ?= 'slop'",
+  "fullscreen",
+  "x<=3 && x2>= 1920 && y <= 30 && y2 >=853"
+];
+
+
+
+#################################
+#       Shadows
+#################################
+clear-shadow = true;
+no-dnd-shadow = true;
+no-dock-shadow = false;
+shadow = true;
+shadow-ignore-shaped = true;
+shadow-offset-x = -10;
+shadow-offset-y = -10;
+shadow-opacity = 0.4;
+shadow-radius = 5;
+shadow-exclude = [
+  "class_i *= 'tray'",
+  "class_g *= 'Compton'",
+  "class_g *= 'compton'",
+  "class_g = 'Firefox' && argb",
+  "class_g ?= 'maim'",
+  "fullscreen",
+  "x<=3 && x2>= 1920 && y <= 30 && y2 >=853"
+];
+
+
+
+#################################
+#       Opacity
+#################################
+menu-opacity = 0.8;
+inactive-opacity = 1;
+active-opacity = 5;
+frame-opacity = 0.8;
+inactive-opacity-override = false;
+
+
+
+#################################
+#       Fading
+#################################
+fading = true;
+fade-delta = 3;
+fade-in-step = 0.02;
+fade-out-step = 0.02;
+alpha-step = 0.02;
