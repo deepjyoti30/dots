@@ -1,0 +1,467 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;==========================================================
+
+[colors]
+;;background = ${xrdb:color0:#222}
+background = #f2e5bc
+background-alt = #ffffff
+;;foreground = ${xrdb:color7:#222}
+foreground = #665c54
+foreground-alt = #000000
+black=${xrdb:color0:#ffffff}
+primary = #9d0006
+secondary = ${xrdb:color4:#ffffff}
+alert = ${xrdb:color1:#ffffff}
+fucsia=#ea51b2
+green=${xrdb:color2:#ffffff}
+beige=${xrdb:color3:#ffffff}
+blue=${xrdb:color4:#ffffff}
+purple=${xrdb:color5:#ffffff}
+cyan=${xrdb:color6:#ffffff}
+white=${xrdb:color7:#ffffff}
+gray=${xrdb:color8:#ffffff}
+yellow=#fd971f
+brown=#cc6633
+gray1=#383830
+gray2=#49483e
+gray3=#a59f85
+gray4=#f5f4f1
+
+[bar/onepunch]
+width=100%
+height=35
+fixed-centre=false
+background=${colors.background}
+foreground=${colors.foreground}
+
+line-size = 2
+;line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 2
+module-margin-right = 1
+
+font-0 = curie:style=Regular:size=12:antialias=false;1
+font-1 = Wuncon Siji:style=Regular:size=11;1
+font-2 = Hack Nerd Font:style=Medium:size=6;5
+font-3 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-4 = siji:pixelsize=10;1
+
+modules-left = bspwm
+modules-center = mpd 
+modules-right = pulseaudio wlan eth battery date time powermenu
+
+tray-position = right
+tray-padding = 2
+tray-detached=false
+;tray-transparent = true
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+
+[module/bspwm]
+type = internal/bspwm
+
+; Only show workspaces defined on the same output as the bar
+; NOTE: The bspwm and XRandR monitor names must match, which they do by default.
+; Default: true
+pin-workspaces = true
+
+; Output mode flags after focused state label
+; Default: false
+inline-mode = false
+
+; Create click handler used to focus workspace
+; Default: true
+enable-click = false
+
+; Create scroll handlers used to cycle workspaces
+; Default: true
+enable-scroll = false
+
+; Set the scroll cycle direction 
+; Default: true
+reverse-scroll = false
+
+; Use fuzzy (partial) matching on labels when assigning 
+; icons to workspaces
+; Example: code;♚ will apply the icon to all workspaces 
+; containing 'code' in the label
+; Default: false
+fuzzy-match = true
+
+;; ws-icon-[0-9]+ = label;icon
+;; Note that the label needs to correspond with the bspwm workspace name
+;ws-icon-0 = code;♚
+;ws-icon-1 = office;♛
+;ws-icon-2 = graphics;♜
+;ws-icon-3 = mail;♝
+;ws-icon-4 = web;♞
+;ws-icon-default = ♟
+;
+;; Available tags:
+;;   <label-monitor>
+;;   <label-state> - gets replaced with <label-(focused|urgent|occupied|empty)>
+;;   <label-mode> - gets replaced with <label-(monocle|tiled|fullscreen|floating|locked|sticky|private)>
+;; Default: <label-state>
+format = %{T2}<label-state>%{T-}
+;
+;; Available tokens:
+;;   %name%
+;; Default: %name%
+;label-monitor = %name%
+;
+;; If any values for label-dimmed-N are defined, the workspace/mode
+;; colors will get overridden with those values if the monitor is out of focus
+;; To only override workspaces in a specific state, use:
+;;   label-dimmed-focused
+;;   label-dimmed-occupied
+;;   label-dimmed-urgent
+;;   label-dimmed-empty
+;label-dimmed-foreground = #555
+;label-dimmed-underline = ${bar/top.background}
+;label-dimmed-focused-background = #f00
+;
+;; Available tokens:
+;;   %name%
+;;   %icon%
+;;   %index%
+;; Default: %icon%  %name%
+label-focused =
+label-focused-foreground = ${colors.primary}
+;label-focused-background = #3f3f3f
+;label-focused-underline = #fba922
+;
+;; Available tokens:
+;;   %name%
+;;   %icon%
+;;   %index%
+;; Default: %icon%  %name%
+label-occupied =
+label-occupied-foreground = ${colors.primary}
+;label-occupied-underline = #555555
+;
+;; Available tokens:
+;;   %name%
+;;   %icon%
+;;   %index%
+;; Default: %icon%  %name%
+;label-urgent = %icon%
+;label-urgent-foreground = #000000
+;label-urgent-background = #bd2c40
+;label-urgent-underline = #9b0a20
+;
+;; Available tokens:
+;;   %name%
+;;   %icon%
+;;   %index%
+;; Default: %icon%  %name%
+label-empty =
+;label-empty-foreground = #55
+;
+;; The following labels will be used to indicate the layout/mode
+;; for the focused workspace. Requires <label-mode>
+;;
+;; Available tokens:
+;;   None
+;;label-monocle = 
+;;label-tiled = 
+;;label-fullscreen = 
+;;label-floating = 
+;;label-pseudotiled = P
+;;label-locked = 
+;;label-locked-foreground = #bd2c40
+;;label-sticky = 
+;;label-sticky-foreground = #fba922
+;;label-private = 
+;;label-private-foreground = #bd2c40
+;
+;; Separator in between workspaces
+;label-separator = |
+;label-separator-padding = 2
+;label-separator-foreground = #ffb52a
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/mpd]
+type = internal/mpd
+host = /home/guidofe/.config/mpd/socket
+format-online = <label-song> <label-time>%{T2}%{F#79740e} <icon-prev><icon-stop><toggle><icon-next>%{F-}%{T-}
+format-stopped= <label-song> %{T2}%{T-} <icon-play>
+format-offline=<label-offline>
+label-time=%{F#a59f85}%elapsed%%{F-}
+label-offline=
+
+icon-prev =
+icon-stop =
+icon-play =
+icon-pause =
+icon-next =
+
+label-song=%{F#79740e}%{T2}%{T-} %{F-}%artist% - %title%
+label-song-maxlen = 70
+label-song-ellipsis = true
+
+[module/xbacklight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = |
+bar-indicator-foreground = #fff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/backlight-acpi]
+format = <label> <ramp>
+ramp-0=
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #f90000
+label = %percentage:2%%
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "%{T2}%{T-} "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = #4bffdc
+label = %percentage_used%%
+
+[module/wlan]
+type = internal/network
+interface = wlo1
+interval = 3.0
+
+format-connected = <label-connected>  
+label-connected = %{T2}%{T-}
+label-connected-foreground=#504945
+format-disconnected =
+label-disconnected =
+label-disconnected-foreground=${colors.foreground-alt}
+
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/eth]
+type = internal/network
+interface = eno1
+interval = 3.0
+
+format-connected =<label-connected>
+format-connected-foreground=${colors.yellow}
+label-connected=%{T2}%{T-}
+
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = %%{F#8f3f71} %%{F-}%a %d %B
+
+
+label = %date%
+format=<label>
+
+[module/time]
+type = internal/date
+interval = 5
+
+time ="%%{F#af3a03}%%{T2} %%{T-}%%{F-}%I:%M %p"
+
+label =%time%
+format=<label>
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = %{T2}%{F#b57614}<ramp-volume>%{F-}%{T-} <label-volume>
+label-volume = %percentage%%
+format-muted = <label-muted>
+label-muted=
+ramp-volume-0=
+ramp-volume-1=
+ramp-volume-2=
+ramp-volume-3=
+ramp-volume-4=
+ramp-volume-5=
+ramp-volume-6=
+ramp-volume-7=
+ramp-volume-8=
+ramp-volume-9=
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = ADP1
+full-at = 98
+
+format-charging =<label-charging>
+label-charging=%{F#b57614}%{T2}%{T-}%{F-} %percentage%%
+
+format-discharging = %{T2}<ramp-capacity>%{T-} <label-discharging>
+label-discharging=%percentage%%
+
+format-full = <label-full>
+label-full="%{T2}%{T-}"
+label-full-foreground=#076678
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = %{T2}<ramp>%{T-}<label>
+format-foreground=${colors.foreground}
+format-warn = %{T2}<ramp>%{T-}<label-warn>
+format-warn-foreground=${colors.yellow}
+
+label = %temperature-c%
+label-warn = %temperature-c%
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-foreground=${colors.blue}
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = "%{T2}%{T-}"
+label-open-foreground = #427b58
+label-close = "%{T2}%{T-}"
+label-close-foreground = #9d0006
+label-separator = " " 
+label-separator-foreground = ${colors.foreground}
+format=<label-toggle><menu>
+
+menu-0-0 = %{T2}%{T-}
+menu-0-0-exec = i3lock-fancy -t ""
+menu-0-1 = %{T2}%{T-}
+menu-0-1-exec = menu-open-1
+menu-0-2 = %{T2} %{T-}
+menu-0-2-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = reboot
+
+menu-2-0 = power off
+menu-2-0-exec = shutdown now
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[module/mpd-advanced]
+type = custom/script
+exec = /home/guidofe/Coding/mpd-advanced.sh
+tail = true
+;click-left = kill -USR1 %pid%
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini

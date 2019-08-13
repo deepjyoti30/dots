@@ -33,7 +33,7 @@ URxvt*saveline:         2000
 URxvt*termName:         rxvt-256color
 URxvt*iso14755:         false
 URxvt*scrollBar:        false
-URxvt.font: xft:monospace:size=12
+URxvt.font: xft:monospace:size=7
 URxvt*scrollBar_right:  false
 URxvt.perl-ext-common:  default,clipboard,url-select,keyboard-select
 URxvt.copyCommand:      xclip -i -selection clipboard
@@ -49,7 +49,7 @@ URxvt.keysym.M-u:       perl:url-select:select_next
 URxvt.urlLauncher:      chrome-unstable
 URxvt.underlineURLs:    true
 URxvt.urlButton:        1
-URxvt*buffered:         false          
+URxvt*buffered:         false
 URxvt.urgentOnBell: 	True
 !URxvt*font: 9x15
 
@@ -57,65 +57,22 @@ URxvt.urgentOnBell: 	True
 ! ======== COLORS =========
 ! =========================
 
-*background:	#1E2541
-*foreground:	#EEFFFF
-*cursorColor:	#EEFFFF
-*color0:	#1E2541
-*color1:	#F0719B
-*color2:	#5AF7B0
-*color3:	#FFA56B
-*color4:	#57C7FF
-*color5:	#C792EA
-*color6:	#89DDFF
-*color7:	#EEFFFF
-*color8:	#354274
-*color9:	#F02E6E
-*color10:	#2CE592
-*color11:	#FF8537
-*color12:	#1DA0E2
-*color13:	#A742EA
-*color14:	#47BAE8
-*color15:	#DEE6E7
-*color16:	#2A335A
-
-!----Previous----
-!*background:  #111111
-!*foreground:  #eeffff
-
-!black
-!*trueblack:   #000000
-!*black:       #111111
-!*color0:      #212121
-!*color8:      #8c8c8c
-
-!red
-!*color1:      #f07178
-!*color9:      #f07178
-
-!green
-!*color2:      #5af78e
-!*color10:     #5af78e
-
-!yellow
-!*color3:      #ffcb6b
-!*color11:     #ffcb6b
-
-!blue
-!*color4:      #57c7ff
-!*color12:     #57c7ff
-
-!magenta
-!*color5:      #c792ea
-!*color13:     #c792ea
-
-!cyan
-!*color6:      #89ddff
-!*color14:     #89ddff
-
-!white
-!*color7:      #eeffff
-!*color15:     #eeffff
-
-!new
-!*color8:      #191a1e
-!*color16:     #191a1e
+*background:    #181818
+*foreground:	#dcdcdc
+*cursorColor:	#dcdcdc
+*color0:	#3f3f3f
+*color1:	#705050
+*color2:	#60b48a
+*color3:	#dfaf8f
+*color4:	#9ab8d7
+*color5:	#dc8cc3
+*color6:	#8cd0d3
+*color7:    #dcdcdc
+*color8:	#709080
+*color9:	#dca3a3
+*color10:	#60b48a
+*color11:	#f0dfaf
+*color12:	#94bff3
+*color13:	#ec93d3
+*color14:	#93e0e3
+*color15:	#ffffff

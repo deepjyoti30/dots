@@ -14,7 +14,7 @@ if [ $HOUR -gt $ELEVEN ];then
     else
         NEW_HOUR=$(($HOUR-$TWELVE))
     fi
-    echo "$ICON $NEW_HOUR:$MIN P.M."
+    echo "$NEW_HOUR:$MIN P.M."
 else
-    echo "$ICON $HOUR:$MIN A.M."
+    echo "$HOUR:$MIN A.M."
 fi

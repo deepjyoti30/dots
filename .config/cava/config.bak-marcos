@@ -1,0 +1,16 @@
+[color]
+
+foreground = '#ffcb6b'
+gradient = 1
+gradient_color_1 = '#ffcb6b'
+gradient_color_2 = '#5af78e'
+
+[general]
+
+bar_width = 1
+bar_spacing = 1
+
+[input]
+
+;method = alsa
+;source = hw:Loopback, 1

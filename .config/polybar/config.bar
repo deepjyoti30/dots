@@ -1,0 +1,117 @@
+;                 __      __              
+;    ____  ____  / /_  __/ /_  ____ ______
+;   / __ \/ __ \/ / / / / __ \/ __ `/ ___/
+;  / /_/ / /_/ / / /_/ / /_/ / /_/ / /    
+; / .___/\____/_/\__, /_.___/\__,_/_/     
+;/_/            /____/                    
+;
+;
+
+[global/wm]
+;margin-top = 
+;margin-bottom = 2
+
+[colors]
+fg = #ffffff
+bg = #212121
+
+[bar/top]
+width = 100%
+height = 35
+offset-x = 0%
+offset-y= 0%
+fixed-center = true
+override-redirect = false 
+
+
+background = ${colors.bg}
+foreground = ${colors.fg}
+
+font-0 = SF Mono:size=8:weight=semibold;1
+
+modules-left =  date time volume battery ewmh
+modules-center =  
+modules-right = xwindow
+
+tray-position = false
+tray-padding = 0
+tray-background = ${colors.bg}
+tray-detached = false
+
+underline-size = 3
+
+spacing = 1 
+padding-left = 1
+padding-right = 1
+module-margin-left = 2
+module-margin-right = 2
+
+[module/volume]
+type = internal/alsa
+
+format-volume = <label-volume>
+label-volume = vol %percentage%%
+module-margin-right = 1
+
+format-volume-background = ${colors.bg}
+label-muted = muted
+
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:30:...%
+format-prefix = " "
+format-prefix-foreground = ${xrdb:color6}
+module-margin-left = 2
+format-padding = 2
+format-background = ${colors.bg}
+
+[module/ewmh]
+type = internal/xworkspaces
+pin-workspaces = true
+enable-scroll = true
+
+format = <label-state>
+
+label-active = ×
+label-active-foreground = ${xrdb:color6}
+label-active-background = ${colors.bg}
+label-active-padding = 1
+
+label-empty = •
+label-empty-foreground = ${colors.fg}
+label-empty-background = ${colors.bg}
+label-empty-padding = 1
+
+label-urgent = !
+label-urgent-foreground = #EC5f67
+label-urgent-background = ${colors.bg}
+label-urgent-padding = 1
+
+
+[module/date]
+type = internal/date
+interval = 1
+date = %a, %d %b 
+format-prefix-foreground = ${xrdb:color6}
+
+[module/time]
+type = internal/date
+interval = 1
+date = %I:%M 
+format-prefix-foreground = ${xrdb:color6}
+
+[module/battery]
+type = internal/battery
+full-at = 100
+battery = BAT0
+adapter = ACAD
+poll-interval = 5
+
+format-charging = <label-charging>
+format-discharging = <label-discharging>
+label-charging = bat %percentage%%
+label-charging-foreground = ${xrdb:color10}
+label-discharging = bat %percentage%%
+label-discharging-foreground = ${xrdb:color15}
+label-full = full!

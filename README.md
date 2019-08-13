@@ -2,11 +2,17 @@
 
 OS: Manjaro Linux
 
+## Semi dark
+
+[![Screenshot](https://i.imgur.com/izdvt8X.png)](https://i.imgur.com/izdvt8X.png)
+
+[colorblocks](bin/colorblocks) and cava inside termite
+
 ## darktheme
 
 [![Screenshot](https://i.imgur.com/lVMGTYc.png)](https://i.imgur.com/lVMGTYc.png)
 
-Ncmpcpp and cava inside termite
+Ncmpcpp and cava inside termite.
 
 [![Screenshot](https://i.imgur.com/w2VkFxZ.png)](https://i.imgur.com/w2VkFxZ.png)
 
