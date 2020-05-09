@@ -1,6 +1,13 @@
 # dotfiles
 
-OS: Manjaro Linux
+- **OS**: Arch Linux
+- **Bar**: Polybar
+- **Compositor**: Compton
+- **Music Player**: Spotify using ncmpcpp
+
+## Orange is a good color
+
+[![Screenshot](https://i.imgur.com/TDB1Brf.png)](https://i.imgur.com/TDB1Brf.png)
 
 ## Semi dark
 

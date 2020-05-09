@@ -2,15 +2,10 @@
 background = #B2111111
 foreground = ${xrdb:foreground}
 foreground-alt= #528BFF
-black = #000000
-red = ${xrdb:color1}
-green = ${xrdb:color2}
-blue = ${xrdb:color4}
-yellow = ${xrdb:color3}
-magenta = ${xrdb:color5}
-cyan = ${xrdb:color6}
-white = ${xrdb:color7}
-grey = ${xrdb:color8}
+black = #212121
+white = #ffffff
+orange = #FF7043
+body = #FFF9C4
 
 [settings]
 screenchange-reload = true
@@ -21,7 +16,7 @@ margin-bottom = 0
 
 [bar/toolbar]
 width = 100%
-height = 35
+height = 40
 offset-y = 2%
 override-redirect = true
 
@@ -43,9 +38,9 @@ padding-right = 4
 background = #000f0f0f
 foreground = ${colors.foreground}
 
-modules-left = mpd
-modules-center = ewmh
-modules-right = battery clock
+modules-left = battery clock
+modules-center = i3
+modules-right = pulseaudio current-spotify
 
 [module/mpd]
 type = internal/mpd
@@ -59,6 +54,27 @@ label-song-foreground = #FFFFFF
 ;#151515
 label-song =  %title%
 
+[module/pulseaudio]
+type = internal/pulseaudio
+
+sink = alsa_output.pci-0000_12_00.3.analog-stereo
+use-ui-max = true
+interval = 5
+
+format-volume =  <label-volume>
+format-muted = <label-muted>
+label-volume = %percentage%%
+label-muted = 
+label-muted-padding = 1
+
+format-volume-foreground = ${colors.orange}
+format-volume-background = ${colors.body}
+format-volume-padding = 1
+
+format-muted-foreground = ${colors.orange}
+format-muted-background = ${colors.body}
+format-muted-padding = 1
+
 [module/battery]
 type = internal/battery
 
@@ -67,17 +83,20 @@ battery = BAT0
 adapter = ADP1
 poll-interval = 5
 
-format-charging-foreground = #FFF
-format-charging-background = #181818
-format-discharging-foreground = #FFF
-format-discharging-background = #181818
+format-charging-background = ${colors.body}
+format-charging-foreground = ${colors.orange}
+format-discharging-background = ${colors.body}
+format-discharging-foreground = ${colors.orange}
 
-format-charging-margin = 1
+format-charging-margin = 0
 
 format-charging-padding = 1
 format-discharging-padding = 1
-format-charging = <animation-charging>
+;format-charging = <animation-charging> <label-charging>
+format-charging = BAT: <label-charging>+
 
+; --- With ramp capacity
+; format-discharging = <ramp-capacity> <label-discharging>
 format-discharging = <ramp-capacity> <label-discharging>
 label-charging = %percentage%%
 label-discharging = %percentage%%
@@ -112,12 +131,12 @@ interval = 1
 
 label-connected = %{A} %{A:wicd-client &:} %essid%%{A}
 format-connected-foreground = ${colors.black}
-format-connected-background = ${colors.blue}
-format-connected-padding = 2
+format-connected-background = #ffffff
+format-connected-padding = 1
 
 format-disconnected-padding = 1
 format-disconnected-foreground = ${colors.red}
-format-disconnected-background = ${colors.blue}
+format-disconnected-background = #ffffff
 
 label-disconnected = %{A:wicd-client &:} Disconnected%{A}
 
@@ -151,11 +170,21 @@ type = custom/script
 exec = "sh $HOME/.config/polybar/time.sh"
 interval = 1.0
 
-format = <label>
-format-foreground = #FFF
-;#151515
-;#F02E6E
-format-background = #181818
+format =  <label>
+format-foreground = ${colors.orange}
+format-background = ${colors.white}
+format-padding = 1
+
+label = %output%
+
+[module/current-spotify]
+type = custom/script
+exec = "sh $HOME/.config/polybar/mpd_current.sh"
+interval = 1.0
+
+format =    <label>
+format-foreground = ${colors.orange}
+format-background = ${colors.white}
 ;#00000000 -> transparent
 format-padding = 1
 
@@ -172,115 +201,18 @@ format-foreground = ${colors.red}
 
 label = %date%
 
-
-
-[module/i3stock]
-type = internal/i3
-
-; Only show workspaces defined on the same output as the bar
-;
-; Useful if you want to show monitor specific workspaces
-; on different bars
-;
-; Default: false
-pin-workspaces = true
-
-; This will split the workspace name on ':'
-; Default: false
-strip-wsnumbers = true
-
-; Sort the workspaces by index instead of the default
-; sorting that groups the workspaces by output
-; Default: false
-index-sort = true
-
-; Create click handler used to focus workspace
-; Default: true
-enable-click = false
-
-; Create scroll handlers used to cycle workspaces
-; Default: true
-
-; Wrap around when reaching the first/last workspace
-; Default: true
-wrapping-scroll = false
-
-; Set the scroll cycle direction
-; Default: true
-reverse-scroll = false
-
-; Use fuzzy (partial) matching on labels when assigning
-; icons to workspaces
-; Example: code;♚ will apply the icon to all workspaces
-; containing 'code' in the label
-; Default: false
-;fuzzy-match = true
-
-; ws-icon-[0-9]+ = label;icon
-; NOTE: The label needs to match the name of the i3 workspace
-ws-icon-0 = 1;♚
-ws-icon-1 = 2;♛
-ws-icon-2 = 3;♜
-ws-icon-3 = 4;♝
-ws-icon-4 = 5;♞
-ws-icon-default = ♟
-; NOTE: You cannot skip icons, e.g. to get a ws-icon-6
-; you must also define a ws-icon-5.
-
-; Available tags:
-;   <label-state> (default) - gets replaced with <label-(focused|unfocused|visible|urgent)>
-;   <label-mode> (default)
-format = <label-state> <label-mode>
-
-; Available tokens:
-;   %mode%
-; Default: %mode%
-label-mode = %mode%
-label-mode-padding = 2
-label-mode-background = #e60053
-
-; Available tokens:
-;   %name%
-;   %icon%
-;   %index%
-;   %output%
-; Default: %icon%  %name%
-label-focused = "■"
-;label-focused-background = #151515
-;#3f3f3f
-label-focused-padding = 1
-label-focused-foreground = #FFFFFF
-;#d3869b
-
-; Available tokens:
-;   %name%
-;   %icon%
-;   %index%
-;   %output%
-; Default: %icon%  %name%
-label-unfocused = "□"
-label-unfocused-padding = 1
-label-unfocused-foreground = #151515
-
-
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
-format-background = ${colors.background}
+format-background = ${colors.body}
+label-font = 3
 
-ws-icon-0 = "1;"
-ws-icon-1 = "2;"
+ws-icon-0 = "1;"
+ws-icon-1 = "2;"
 ws-icon-2 = "3;"
-ws-icon-3 = "4;"
-ws-icon-4 = "5;"
-ws-icon-5 = "6;"
-
-;ws-icon-0 = "1;"
-;ws-icon-1 = "2;"
-;ws-icon-2 = "3;"
-;ws-icon-3 = "4;"
-;ws-icon-4 = "5;"
-;ws-icon-5 = "6;"
+ws-icon-3 = "4;"
+ws-icon-4 = "5;龜"
+ws-icon-5 = "6;"
 ;ws-icon-6 = "7;"
 ;ws-icon-7 = "8;"
 
@@ -288,48 +220,20 @@ index-sort = true
 wrapping-scroll = true
 strip-wsnumbers = true
 
-;label-focused = ""
 label-focused = "%icon%"
-label-focused-foreground = #83a598
-label-focused-background = #00000000
-;${colors.cyan}
-label-focused-padding = 1
+label-focused-foreground = ${colors.orange}
+label-focused-background = ${colors.body}
+label-focused-padding = 2
 
-;label-unfocused = ""
 label-unfocused = "%icon%"
-label-unfocused-padding = 1
-label-unfocused-background = #00000000
-;#FFFFFF
-;${colors.grey}
-label-unfocused-foreground = #d3869b
-;${colors.green}
+label-unfocused-padding = 2
+label-unfocused-background = ${colors.white}
+label-unfocused-foreground = ${colors.orange}
 
 label-urgent = "%icon%"
 label-urgent-foreground = #ffffff
-label-urgent-background = ${colors.red}
+label-urgent-background = ${colors.orange}
 label-urgent-padding = 2
 
 label-visible = "%icon%"
 label-visible-padding = 2
-
-[module/ewmh]
-type = internal/xworkspaces
-pin-workspaces = true
-enable-scroll = true
-
-format = <label-state>
-
-label-active = ×
-label-active-foreground = #89ddff
-label-active-background = #181818
-label-active-padding = 1
-
-label-empty = •
-label-empty-foreground = #FFFFFF
-label-empty-background = #181818
-label-empty-padding = 1
-
-label-urgent = !
-label-urgent-foreground = #EC5f67
-label-urgent-background = #181818
-label-urgent-padding = 1
