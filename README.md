@@ -2,8 +2,15 @@
 
 - **OS**: Arch Linux
 - **Bar**: Polybar
-- **Compositor**: Compton
+- **Compositor**: Picom
 - **Music Player**: Spotify using ncmpcpp
+- **Startpage**: [startpage](https://github.com/deepjyoti30/startpage)
+- **WM**: i3-gaps-rounded
+- **Colorscheme**: [here](https://github.com/deepjyoti30/dots/blob/master/colors.json)
+
+## Not Big Sur
+
+[![Screenshot](https://i.imgur.com/ApsjpnY.png)](https://i.imgur.com/ApsjpnY.png)
 
 ## Orange is a good color
 

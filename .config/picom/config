@@ -1,0 +1,76 @@
+
+#################################
+#     GLX backend
+#################################
+
+backend = "glx";
+glx-copy-from-front = false;
+glx-no-rebind-pixmap = true;
+glx-no-stencil = true;
+glx-swap-method = 1;
+#glx-use-gpushader4 = true;
+mark-ovredir-focused = true;
+mark-wmwin-focused = true;
+refresh-rate = 0;
+use-ewmh-active-win = true;
+vsync = "opengl-swc";
+
+
+
+#################################
+#       Blur
+#################################
+blur-background = true;
+blur-background-fixed = true;
+blur-strength = 8;
+blur-background-exclude = [
+  "name = 'Screenshot'",
+  "class_i *= 'tray'",
+  "class_g = 'Firefox' && argb",
+  "class_g ?= 'maim'",
+  "class_g ?= 'slop'",
+  "fullscreen",
+  "x<=3 && x2>= 1920 && y <= 30 && y2 >=853"
+];
+
+
+
+#################################
+#       Shadows
+#################################
+shadow = true;
+no-dnd-shadow = true;
+no-dock-shadow = true;
+clear-shadow = true;
+shadow-radius = 10;
+shadow-offset-x = 7;
+shadow-offset-y = 7;
+shadow-exclude = [
+  "class_i *= 'tray'",
+  "class_g *= 'Compton'",
+  "class_g = 'Firefox' && argb",
+  "class_g ?= 'maim'",
+  "fullscreen",
+  "name = 'Polybar tray window'"
+];
+
+
+
+#################################
+#       Opacity
+#################################
+menu-opacity = 0.8;
+inactive-opacity = 1;
+active-opacity = 5;
+frame-opacity = 0.8;
+inactive-opacity-override = false;
+
+
+
+#################################
+#       Fading
+#################################
+fading = true;
+fade-delta = 3;
+fade-in-step = 0.02;
+fade-out-step = 0.02;

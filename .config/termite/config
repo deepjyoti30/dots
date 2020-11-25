@@ -1,66 +1,88 @@
 [options]
 allow_bold = true
-audible_bell = true
+audible_bell = false
+#bold_is_bright = true
+#cell_height_scale = 1.0
+#cell_width_scale = 1.0
 clickable_url = true
 dynamic_title = true
-font = Iosevka 10
+font = Jetbrains Mono 9
+#fullscreen = true
 icon_name = terminal
+#mouse_autohide = false
+scroll_on_output = false
 scroll_on_keystroke = true
-scrollback_lines = -1
+# Length of the scrollback buffer, 0 disabled the scrollback buffer
+# and setting it to a negative value means "infinite scrollback"
+scrollback_lines = 10000
+#search_wrap = true
 urgent_on_bell = true
-hyperlinks = true
-browser = google-chrome-dev
-cursor_blink = on
-cursor_shape = ibeam
-filter_unmatched_urls = true
-scrollbar = off
+hyperlinks = false
 
+# $BROWSER is used by default if set, with xdg-open as a fallback
+browser = google-chrome-dev
+
+# "system", "on" or "off"
+cursor_blink = on
+
+# "block", "underline" or "ibeam"
+cursor_shape = ibeam
+
+# Hide links that are no longer valid in url select overlay mode
+filter_unmatched_urls = true
+
+# Emit escape sequences for extra modified keys
+#modify_other_keys = false
+
+# set size hints for the window
+#size_hints = false
+
+# "off", "left" or "right"
+#scrollbar = off
 
 [colors]
-foreground =        #dcdcdc
-foreground_bold =   #dcdcdc
-foreground_dim =    #8c8c8c
-cursor =            #dcdcdc
-cursor_foreground = #dcdcdc
-background =        #181818
-# 2c2c2c
+# If both of these are unset, cursor falls back to the foreground color,
+# and cursor_foreground falls back to the background color.
+#cursor = #dcdccc
+#cursor_foreground = #dcdccc
 
-# black
-color0 =            #3f3f3f
-color8 =            #709080
+#foreground = #dcdccc
+#foreground_bold = #ffffff
+#background = #3f3f3f
 
-# red
-color1 =            #705050
-color9 =            #dca3a3
+# 20% background transparency (requires a compositor)
+#background = rgba(63, 63, 63, 0.8)
 
-# green
-color2 =            #60b48a
-color10 =           #60b48a
+# If unset, will reverse foreground and background
+highlight = #2f2f2f
 
-# yellow
-color3 =            #dfaf8f
-color11 =           #f0dfaf
+# Colors from color0 to color254 can be set
+color0 = #3f3f3f
+color1 = #705050
+color2 = #60b48a
+color3 = #dfaf8f
+color4 = #506070
+color5 = #dc8cc3
+color6 = #8cd0d3
+color7 = #dcdccc
+color8 = #709080
+color9 = #dca3a3
+color10 = #c3bf9f
+color11 = #f0dfaf
+color12 = #94bff3
+color13 = #ec93d3
+color14 = #93e0e3
+color15 = #ffffff
 
-# blue
-color4 =            #9ab8d7
-color12 =           #94bff3
+[hints]
+#font = Monospace 12
+#foreground = #dcdccc
+#background = #3f3f3f
+#active_foreground = #e68080
+#active_background = #3f3f3f
+#padding = 4
+#border = #3f3f3f
+#border_width = 0.5
+#roundness = 2.0
 
-# magenta
-color5 =            #dc8cc3
-color13 =           #ec93d3
-
-# cyan
-color6 =            #8cd0d3
-color14 =           #93e0e3
-
-# white
-color7 =            #dcdcdc
-color15 =           #ffffff
-
-# Extra colors
-color16 =           #f78c6c
-color17 =           #ff5370
-color18 =           #303030
-color19 =           #353535
-color20 =           #b2ccd6
-color21 =           #eeffff
+# vim: ft=dosini cms=#%s
