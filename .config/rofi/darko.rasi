@@ -1,0 +1,62 @@
+/* RASI Theme */
+
+* {
+  background: #32302f;
+  border-color: #eeffff;
+  foreground: #eeffff;
+  selected-background: #d5c4a1;
+  selected-foreground: @background;
+
+  spacing: 2;
+  padding: 5;
+  border-radius: 3;
+  background-color: transparent;
+  text-color: @foreground;
+  font: "SF Mono 12";
+}
+
+configuration {
+  //show-icons: true;
+}
+
+#window {
+  width: 60%;
+  border: 3;
+  padding: 10;
+  border-radius: 0;
+  border-color: @border-color;
+  background-color: @background;
+}
+
+#mainbox {
+  border: 0;
+  padding: 0;
+}
+
+#listview {
+  fixed-height: true;
+  columns: 2;
+  border-color: @background;
+  lines: 10;
+}
+
+#element {
+  padding: 6 10;
+  border: 0;
+}
+
+#element selected.normal {
+  text-color: @selected-foreground;
+  background-color: @selected-background;
+}
+
+#button selected {
+  background-color: @selected-background;
+  text-color: @selected-foreground;
+}
+
+#prompt {
+  padding: 4 10 4 10;
+  text-color: @selected-foreground;
+  background-color: @selected-background;
+}

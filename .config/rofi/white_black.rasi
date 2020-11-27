@@ -1,0 +1,19 @@
+!!!!!!!!!!
+!! rofi !!
+!!!!!!!!!!
+
+rofi.lines: 8
+rofi.eh: 2
+rofi.padding: 50
+rofi.width: 25
+
+rofi.bw: 0
+rofi.separator-style: none
+rofi.hide-scrollbar: true
+
+!                  'background', 'border', 'separator'
+rofi.color-window: argb:FF181d1e, #7c8389, #1d1f21
+! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
+rofi.color-normal: argb:031d1f21, #f3f4f5, argb:031d1f21, argb:031d1f21, #ff4d94 
+rofi.color-urgent: argb:031d1f21, #f3f4f5, argb:bc303541, argb:031d1f21, #ff4d94
+rofi.color-active: argb:031d1f21, #f3f4f5, argb:031d1f21, argb:031d1f21, #ff4d94 
