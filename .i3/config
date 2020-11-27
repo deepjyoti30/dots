@@ -380,3 +380,6 @@ exec "termite -e fortune"
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
+
+# Set DPI
+exec echo Xft.dpi: 92 | xrdb -merge
