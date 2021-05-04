@@ -40,8 +40,8 @@ font-4 = FontAwesome5Brands:style=Solid:pixelsize=9;2
 foreground = ${colors.foreground}
 
 modules-left = time pulseaudio
-;modules-center = 
-modules-right = i3 cpu
+modules-center =  i3
+modules-right = memory wireless
 
 [module/mpd]
 type = internal/mpd
@@ -89,7 +89,7 @@ format-foreground = ${colors.color4}
 format-background = ${colors.background}
 format-padding = 2;
 
-label = %time% %date%
+label = %time%
 label-foreground = ${colors.foreground}
 
 [module/i3]
@@ -130,6 +130,41 @@ type = internal/cpu
 
 format =  <label>
 label = %percentage%%
+
+format-foreground = ${colors.color5}
+format-background = ${colors.background}
+
+label-foreground = ${colors.foreground}
+format-padding = 2;
+
+
+[module/wireless]
+type = internal/network
+interface = wlp6s0
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 3.0
+
+format-connected =  <label-connected>
+format-connected-foreground = ${colors.color2}
+format-connected-padding = 2
+label-connected-foreground = ${colors.foreground}
+
+format-disconnected = Not connected
+label-connected = %downspeed:5%
+;%essid% %downspeed:9%
+
+
+[module/memory]
+type = internal/memory
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 3
+
+format =  <label>
+label = %percentage_used%%
 
 format-foreground = ${colors.color5}
 format-background = ${colors.background}
