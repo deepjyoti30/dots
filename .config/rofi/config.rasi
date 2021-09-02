@@ -1,51 +1,129 @@
 configuration {
-  modi: "run,drun,window";
-  width: 25;
   font: "JetBrains Mono 10";
   terminal: "termite";
   disable-history: false;
-  sidebar-mode: true;
-  tokenize: true;
-  m: "-5";
-  line-margin: 2;
-  line-padding: 1;
-  separator-style: "none";
-  hide-scrollbar: true;
-  window-format: "{w} {c}";
 }
 
 * {
-  bg: #0F1212;
-  fg: #e3e3e3;
-  accent: #131717;
-  
-  background-color: @bg;
-  text-color: @fg;
+    text-color:                  var(fg);
+    background-color:            var(bg);
+    bg:                          #0F1212;
+    fg:                          #e3e3e3;
+    accent:                      #131717;
 }
-
-window {
-  padding: 30px;
-  border-radius: 5px;
-}
-
-prompt, entry {
-  text-color: @fg;
-  padding: 3px;
-}
-
 element {
-  border-radius: 2px;
-  padding: 4px;
+    padding:       5px ;
+    cursor:        pointer;
+    spacing:       5px ;
+    border:        0;
+    border-radius: 2px ;
+    margin: 1px;
+}
+element normal.normal {
+    background-color: var(bg);
+    text-color:       var(fg);
 }
 
 element selected {
-  background-color: @fg;
-  text-color: @bg;
+    background-color: var(fg);
+    text-color:       var(bg);
 }
 
+element selected.normal {
+    background-color: var(fg);
+    text-color:       var(accent);
+}
+
+element alternate.normal {
+    background-color: var(bg);
+    text-color:       var(fg);
+}
+
+element-text {
+    background-color: rgba ( 0, 0, 0, 0 % );
+    cursor:           inherit;
+    highlight:        inherit;
+    text-color:       inherit;
+}
+element-icon {
+    background-color: rgba ( 0, 0, 0, 0 % );
+    size:             1.0000em ;
+    cursor:           inherit;
+    text-color:       inherit;
+}
+window {
+    padding:          30px ;
+    background-color: var(bg);
+    border:           none;
+    border-radius:    5px ;
+    width: 450px;
+    height: 420px;
+}
+mainbox {
+    padding: 0;
+    border:  0;
+    width: 25px;
+}
+message {
+    padding:      1px ;
+}
+
+textbox {
+    text-color: var(fg);
+}
+listview {
+    padding:      2px 0px 0px ;
+    scrollbar:    false;
+    spacing:      2px ;
+    fixed-height: 0;
+    border:       none;
+    margin: 10px 0px 0px;
+}
+scrollbar {
+    enabled: false;
+}
+sidebar {
+    enabled: false;
+}
+button {
+    cursor:     pointer;
+    spacing:    0;
+}
 button selected {
-  background-color: @fg;
-  text-color: @bg;
-  border-radius: 2px;
-  padding: 3px;
+    padding:          3px ;
+    background-color: var(fg);
+    text-color:       var(bg);
+    border-radius:    2px ;
+}
+num-filtered-rows {
+    enabled: false;
+}
+num-rows {
+    enabled: false;
+}
+textbox-num-sep {
+    enabled: false;
+}
+inputbar {
+    padding:    1px ;
+    spacing:    0px ;
+    text-color: var(fg);
+    children:   [ prompt,textbox-prompt-colon,entry,num-filtered-rows,textbox-num-sep,num-rows,case-indicator ];
+}
+case-indicator {
+    enabled: false;
+}
+entry {
+    padding:           3px ;
+    text-color:        var(fg);
+    cursor:            text;
+    spacing:           0;
+    placeholder-color: rgba ( 128, 128, 128, 100 % );
+    placeholder:       "Search apps";
+}
+prompt {
+    enabled: false;
+}
+textbox-prompt-colon {
+    enabled: false;
 }
